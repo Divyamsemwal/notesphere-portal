@@ -13,7 +13,7 @@ import PreviousYears from "./pages/PreviousYears";
 import Results from "./pages/Results";
 import Schedule from "./pages/Schedule";
 import NotFound from "./pages/NotFound";
-import Navbar from "./components/Navbar"; // Updated import path
+import Navbar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import WelcomePage from "./pages/WelcomePage";
