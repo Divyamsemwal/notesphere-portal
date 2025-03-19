@@ -7,6 +7,7 @@ import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,11 +37,13 @@ const Login = () => {
       }
 
       // Mock login
-      localStorage.setItem("user", JSON.stringify({ 
+      const userData = { 
         email, 
         role: email.includes("teacher") ? "teacher" : "student",
         name: email.split("@")[0]
-      }));
+      };
+      
+      login(userData);
       
       toast({
         title: "Success",
