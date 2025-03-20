@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import WelcomePage from "./pages/WelcomePage";
 
 const queryClient = new QueryClient();
 
@@ -26,44 +27,63 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Navbar />
           <AnimatePresence mode="wait">
             <Routes>
               {/* Public routes */}
+              <Route path="/welcome" element={<WelcomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Navigate to="/welcome" replace />} />
               
-              {/* Protected routes */}
-              <Route path="/" element={
+              {/* Protected routes - with Navbar */}
+              <Route path="/dashboard" element={
                 <ProtectedRoute>
-                  <Index />
+                  <>
+                    <Navbar />
+                    <Index />
+                  </>
                 </ProtectedRoute>
               } />
               <Route path="/notes" element={
                 <ProtectedRoute>
-                  <Notes />
+                  <>
+                    <Navbar />
+                    <Notes />
+                  </>
                 </ProtectedRoute>
               } />
               <Route path="/previous-years" element={
                 <ProtectedRoute>
-                  <PreviousYears />
+                  <>
+                    <Navbar />
+                    <PreviousYears />
+                  </>
                 </ProtectedRoute>
               } />
               <Route path="/results" element={
                 <ProtectedRoute>
-                  <Results />
+                  <>
+                    <Navbar />
+                    <Results />
+                  </>
                 </ProtectedRoute>
               } />
               <Route path="/schedule" element={
                 <ProtectedRoute>
-                  <Schedule />
+                  <>
+                    <Navbar />
+                    <Schedule />
+                  </>
                 </ProtectedRoute>
               } />
               
               {/* Catch-all route */}
               <Route path="*" element={
                 <ProtectedRoute>
-                  <NotFound />
+                  <>
+                    <Navbar />
+                    <NotFound />
+                  </>
                 </ProtectedRoute>
               } />
             </Routes>

@@ -39,7 +39,7 @@ const Login = () => {
       // Mock login
       const userData = { 
         email, 
-        role: email.includes("teacher") ? "teacher" : "student",
+        role: email.includes("teacher") ? "teacher" as const : "student" as const,
         name: email.split("@")[0]
       };
       
@@ -51,7 +51,7 @@ const Login = () => {
       });
       
       setIsLoading(false);
-      navigate("/");
+      navigate("/dashboard");
     }, 1500);
   };
 
