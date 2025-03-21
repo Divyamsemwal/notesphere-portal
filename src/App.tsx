@@ -47,8 +47,16 @@ const App = () => (
                   <WelcomePage />
                 </AuthRedirect>
               } />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={
+                <AuthRedirect>
+                  <Login />
+                </AuthRedirect>
+              } />
+              <Route path="/register" element={
+                <AuthRedirect>
+                  <Register />
+                </AuthRedirect>
+              } />
               <Route path="/" element={<Navigate to="/welcome" replace />} />
               
               {/* Protected routes - with Navbar */}

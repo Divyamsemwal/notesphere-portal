@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, UserPlus } from "lucide-react";
@@ -24,11 +24,12 @@ const Register = () => {
   const { toast } = useToast();
   const { login, isAuthenticated } = useAuth();
 
-  // If already authenticated, redirect to dashboard
-  if (isAuthenticated) {
-    navigate("/dashboard");
-    return null;
-  }
+  // Use useEffect for navigation to avoid the React warning about navigation during render
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -138,7 +139,11 @@ const Register = () => {
 
               <div className="space-y-4">
                 <div className="text-sm font-medium">Account Type</div>
-                <RadioGroup value={role} onValueChange={setRole} className="flex space-x-4">
+                <RadioGroup 
+                  value={role} 
+                  onValueChange={(value: "student" | "teacher") => setRole(value)} 
+                  className="flex space-x-4"
+                >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="student" id="student" />
                     <Label htmlFor="student">Student</Label>

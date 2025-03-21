@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, LogIn } from "lucide-react";
@@ -17,10 +18,12 @@ const Login = () => {
   const { toast } = useToast();
   const { login, isAuthenticated } = useAuth();
 
-  if (isAuthenticated) {
-    navigate("/dashboard");
-    return null;
-  }
+  // Use useEffect for navigation to avoid the React warning about navigation during render
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
