@@ -17,8 +17,20 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import WelcomePage from "./pages/WelcomePage";
+import { useAuth } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
+
+// Helper component to handle auth-based redirects
+const AuthRedirect = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAuth();
+  
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+  
+  return <>{children}</>;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -30,7 +42,11 @@ const App = () => (
           <AnimatePresence mode="wait">
             <Routes>
               {/* Public routes */}
-              <Route path="/welcome" element={<WelcomePage />} />
+              <Route path="/welcome" element={
+                <AuthRedirect>
+                  <WelcomePage />
+                </AuthRedirect>
+              } />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/" element={<Navigate to="/welcome" replace />} />

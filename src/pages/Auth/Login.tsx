@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -16,43 +15,52 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
+
+  if (isAuthenticated) {
+    navigate("/dashboard");
+    return null;
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // This would normally connect to a real backend
-    // For now we'll simulate a login with localStorage
-    setTimeout(() => {
-      // Simple validation
-      if (!email || !password) {
+    if (!email || !password) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const success = await login(email, password);
+      
+      if (success) {
+        toast({
+          title: "Success",
+          description: "You have successfully logged in",
+        });
+        navigate("/dashboard");
+      } else {
         toast({
           title: "Error",
-          description: "Please fill in all fields",
+          description: "Invalid email or password",
           variant: "destructive",
         });
-        setIsLoading(false);
-        return;
       }
-
-      // Mock login
-      const userData = { 
-        email, 
-        role: email.includes("teacher") ? "teacher" as const : "student" as const,
-        name: email.split("@")[0]
-      };
-      
-      login(userData);
-      
+    } catch (error) {
       toast({
-        title: "Success",
-        description: "You have successfully logged in",
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
       });
-      
+    } finally {
       setIsLoading(false);
-      navigate("/dashboard");
-    }, 1500);
+    }
   };
 
   return (

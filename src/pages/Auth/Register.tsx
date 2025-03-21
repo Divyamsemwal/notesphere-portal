@@ -9,61 +9,81 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { authService } from "@/backend/services/authService";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState<"student" | "teacher">("student");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login, isAuthenticated } = useAuth();
+
+  // If already authenticated, redirect to dashboard
+  if (isAuthenticated) {
+    navigate("/dashboard");
+    return null;
+  }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // This would normally connect to a real backend
-    // For now we'll simulate registration with localStorage
-    setTimeout(() => {
-      // Simple validation
-      if (!name || !email || !password || !confirmPassword) {
-        toast({
-          title: "Error",
-          description: "Please fill in all fields",
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        toast({
-          title: "Error",
-          description: "Passwords do not match",
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
-
-      // Mock registration
-      localStorage.setItem("user", JSON.stringify({ 
-        email, 
-        name,
-        role
-      }));
-      
+    // Simple validation
+    if (!name || !email || !password || !confirmPassword) {
       toast({
-        title: "Success",
-        description: "You have successfully registered",
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
       });
-      
       setIsLoading(false);
-      navigate("/");
-    }, 1500);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Passwords do not match",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      // Register the user using our mock backend
+      const response = authService.register(name, email, password, role);
+      
+      if (response.success) {
+        toast({
+          title: "Success",
+          description: "You have successfully registered",
+        });
+        
+        // Auto-login the user
+        await login(email, password);
+        navigate("/dashboard");
+      } else {
+        toast({
+          title: "Error",
+          description: response.error || "Registration failed",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

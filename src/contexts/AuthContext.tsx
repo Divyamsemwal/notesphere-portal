@@ -1,20 +1,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
-
-type UserRole = "student" | "teacher";
-
-interface User {
-  name: string;
-  email: string;
-  role: UserRole;
-}
+import { authService } from "@/backend/services/authService";
+import { User } from "@/backend/models/User";
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isTeacher: boolean;
   isStudent: boolean;
-  login: (userData: User) => void;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -22,23 +16,41 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check localStorage for existing user
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    // Check localStorage for existing token
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      // Validate the token with our mock backend
+      const response = authService.validateToken(storedToken);
+      if (response.success) {
+        setUser(response.data);
+        setToken(storedToken);
+      } else {
+        // Clear invalid token
+        localStorage.removeItem("token");
+      }
     }
   }, []);
 
-  const login = (userData: User) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = async (email: string, password: string) => {
+    const response = authService.login(email, password);
+    
+    if (response.success) {
+      setUser(response.data.user);
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      return true;
+    }
+    
+    return false;
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    setToken(null);
+    localStorage.removeItem("token");
   };
 
   return (

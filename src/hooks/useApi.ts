@@ -56,12 +56,13 @@ export const useApi = () => {
     return callApi(api.notes.search, searchTerm);
   };
   
-  const addNote = (noteData) => {
+  const addNote = (noteData: any) => {
     if (!user) {
       setError("You must be logged in to add notes");
       return Promise.resolve(null);
     }
     
+    // Use the user.id from the User type in backend/models/User.ts
     return callApi(api.notes.add, noteData, user.id);
   };
   
