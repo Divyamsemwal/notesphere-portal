@@ -1,12 +1,13 @@
 
-import { User, users } from "../models/User";
+import { User } from "../models/User";
+import { db } from "../utils/database";
 import { ApiResponse, successResponse, errorResponse } from "../utils/apiResponse";
 
 // Mock authentication service
 export const authService = {
   login: (email: string, password: string): ApiResponse<{ user: User; token: string }> => {
     // In a real app, we would validate the password
-    const user = users.find(u => u.email === email);
+    const user = db.users.findByEmail(email);
     
     if (!user) {
       return errorResponse("Invalid credentials", "Authentication failed");
@@ -20,21 +21,16 @@ export const authService = {
   
   register: (name: string, email: string, password: string, role: "student" | "teacher"): ApiResponse<{ user: User; token: string }> => {
     // Check if user already exists
-    if (users.some(u => u.email === email)) {
+    if (db.users.findByEmail(email)) {
       return errorResponse("Email already in use", "Registration failed");
     }
     
     // Create a new user
-    const newUser: User = {
-      id: (users.length + 1).toString(),
+    const newUser = db.users.create({
       name,
       email,
-      role,
-      createdAt: new Date().toISOString(),
-    };
-    
-    // In a real app, we would save to database
-    users.push(newUser);
+      role
+    });
     
     // Generate a mock token
     const token = `mock-token-${newUser.id}-${Date.now()}`;
@@ -52,7 +48,7 @@ export const authService = {
     const parts = token.split("-");
     const userId = parts[2];
     
-    const user = users.find(u => u.id === userId);
+    const user = db.users.findById(userId);
     
     if (!user) {
       return errorResponse("User not found", "Authentication failed");
