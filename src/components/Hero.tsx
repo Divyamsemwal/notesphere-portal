@@ -51,7 +51,7 @@ const Hero = () => {
             WELCOME TO
           </motion.span>
           <motion.span custom={1} variants={textAnimation} className="block mt-2 text-gradient">
-            STUDY NOTION
+            STUDY BUDDY
           </motion.span>
           <motion.span custom={2} variants={textAnimation} className="block mt-2">
             CREATE NEW
