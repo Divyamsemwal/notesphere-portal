@@ -7,7 +7,7 @@ import PageTransition from "@/components/PageTransition";
 const Index = () => {
   const featuredCourses = [
     {
-      title: "Web Development",
+      title: "All subjects",
       description: "Learn modern web development with React and Node.js",
       icon: <Code className="w-6 h-6" />,
       link: "/notes",
