@@ -66,7 +66,7 @@ const Login = () => {
         >
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <h1 className="text-3xl font-bold text-gradient">StudyNotion</h1>
+              <h1 className="text-3xl font-bold text-gradient">StudyBuddy</h1>
             </Link>
             <p className="mt-2 text-muted-foreground">
               Sign in to your account
