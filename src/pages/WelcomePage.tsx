@@ -48,7 +48,7 @@ const WelcomePage = () => {
           className="mb-8"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
-            Welcome to StudyNotion
+            Welcome to StudyBuddy
           </h1>
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
             Your ultimate learning companion for academic excellence
