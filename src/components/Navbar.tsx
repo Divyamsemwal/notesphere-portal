@@ -21,7 +21,7 @@ const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
 
   const navigationLinks = [
-    { name: "Home", path: "/", icon: <BookOpen className="w-5 h-5" /> },
+    //{ name: "Home", path: "/", icon: <BookOpen className="w-5 h-5" /> },
     { name: "Notes", path: "/notes", icon: <BookOpen className="w-5 h-5" /> },
     { name: "Previous Years", path: "/previous-years", icon: <FileText className="w-5 h-5" /> },
     { name: "Results", path: "/results", icon: <ExternalLink className="w-5 h-5" /> },
@@ -60,7 +60,7 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="text-2xl font-bold tracking-tight text-gradient">
-                StudyNotion
+                StudyBuddy
               </span>
             </motion.div>
           </Link>
