@@ -24,7 +24,7 @@ const Notes = () => {
       description: "Comprehensive notes on DSA including arrays, linked lists, trees, and graphs.",
       category: "computer-science",
       downloadUrl: "/sample-notes/dsa-notes.pdf",
-      viewUrl: "https://example.com/view/dsa-notes",
+      viewUrl: "https://drive.google.com/file/d/1piA8SNrO-VP6pWXiorJuKRN7cO4AnIRi/view?usp=drivesdk",
     },
     {
       id: 2,
