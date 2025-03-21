@@ -22,7 +22,7 @@ const Results = () => {
     {
       title: "Professional Course Results",
       description: "Results for professional courses like B.Tech, MBA, MCA, etc.",
-      link: "https://puchd.ac.in/results.php",
+      link: "https://results.puexam.in/HomePage.aspx?Sess=DHglHeX/l18=",
       delay: 3,
     },
     {
