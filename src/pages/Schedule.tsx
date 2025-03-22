@@ -75,7 +75,7 @@ const Schedule = () => {
       date: "2023-08-05",
       duration: "1 hour 25 minutes",
       instructor: "Dr. Sharma",
-      watchLink: "https://example.com/watch/python-intro",
+      watchLink: "https://youtu.be/6i3EGqOBRiU?si=uzZQBd8kI2qkMqqr",
     },
     {
       id: 2,
@@ -84,7 +84,7 @@ const Schedule = () => {
       date: "2023-08-03",
       duration: "1 hour 45 minutes",
       instructor: "Prof. Gupta",
-      watchLink: "https://example.com/watch/ai-fundamentals",
+      watchLink: "https://youtu.be/pKeVMlkFpRc?si=4TUQ6fAqktuqz6C4",
     },
     {
       id: 3,
