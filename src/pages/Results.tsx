@@ -10,13 +10,13 @@ const Results = () => {
     {
       title: "Undergraduate Results",
       description: "BA, B.Sc, B.Com and other undergraduate course results",
-      link: "https://puchd.ac.in/results.php",
+      link: "https://results.puexam.in/HomePage.aspx?Sess=DHglHeX%2fl18%3d",
       delay: 1,
     },
     {
       title: "Postgraduate Results",
       description: "MA, M.Sc, M.Com and other postgraduate course results",
-      link: "https://puchd.ac.in/results.php",
+      link: "https://results.puexam.in/HomePage.aspx?Sess=DHglHeX%2fl18%3d",
       delay: 2,
     },
     {
@@ -28,7 +28,7 @@ const Results = () => {
     {
       title: "Entrance Examination Results",
       description: "Results for various entrance examinations",
-      link: "https://puchd.ac.in/results.php",
+      link: "https://results.puexam.in/EntranceHome2024.aspx",
       delay: 4,
     },
   ];
