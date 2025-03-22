@@ -36,7 +36,7 @@ const PreviousYears = () => {
       category: "computer-science",
       year: "2023",
       downloadUrl: "/sample-papers/dsa-2023.pdf",
-      viewUrl: "https://example.com/view/dsa-2023",
+      viewUrl: "https://drive.google.com/file/d/13fcn3KFvKKzJbZelJAnrx1WGp8mcoh73/view?usp=drivesdk",
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ const PreviousYears = () => {
       category: "computer-science",
       year: "2023",
       downloadUrl: "/sample-papers/oop-2023.pdf",
-      viewUrl: "https://example.com/view/oop-2023",
+      viewUrl: "https://drive.google.com/file/d/1d5999oLwYyvupgJouf1Y8cqCM-CG0ETy/view?usp=drivesdk",
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ const PreviousYears = () => {
       category: "mathematics",
       year: "2022",
       downloadUrl: "/sample-papers/calculus-2022.pdf",
-      viewUrl: "https://example.com/view/calculus-2022",
+      viewUrl: "https://drive.google.com/file/d/1F8blsuzegCjUGtY2f12FMHDPUN0yXFLT/view?usp=drivesdk",
     },
     {
       id: 4,
@@ -63,7 +63,7 @@ const PreviousYears = () => {
       category: "mathematics",
       year: "2022",
       downloadUrl: "/sample-papers/linear-algebra-2022.pdf",
-      viewUrl: "https://example.com/view/linear-algebra-2022",
+      viewUrl: "https://drive.google.com/file/d/1BfhU7cchzJ7GhMNVONZ9_oiSJHvivfiT/view?usp=drivesdk",
     },
     {
       id: 5,
