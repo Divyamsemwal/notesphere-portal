@@ -24,7 +24,7 @@ const Notes = () => {
       description: "Comprehensive notes on DSA including arrays, linked lists, trees, and graphs.",
       category: "computer-science",
       downloadUrl: "/sample-notes/dsa-notes.pdf",
-      viewUrl: "https://drive.google.com/file/d/1piA8SNrO-VP6pWXiorJuKRN7cO4AnIRi/view?usp=drivesdk",
+      viewUrl: "https://drive.google.com/file/d/12Zms4FAPDC509smcSHLFECDAILJkdRAw/view?usp=drivesdk",
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const Notes = () => {
       description: "Complete guide to OOP concepts, inheritance, polymorphism, and encapsulation.",
       category: "computer-science",
       downloadUrl: "/sample-notes/oop-notes.pdf",
-      viewUrl: "https://example.com/view/oop-notes",
+      viewUrl: "https://drive.google.com/file/d/12bIhsIUdA2XZ8kmUJlmmj0meiWuvTnLi/view?usp=drivesdk",
     },
     {
       id: 3,
