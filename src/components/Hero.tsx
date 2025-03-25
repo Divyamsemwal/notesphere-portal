@@ -70,7 +70,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="max-w-2xl mx-auto text-xl text-muted-foreground mb-12"
         >
-          Access comprehensive study materials, previous year papers, and stay updated with your class schedule.
+          Access comprehensive study materials, previous year papers, and stay updated with your academic resources.
         </motion.p>
 
         <motion.div

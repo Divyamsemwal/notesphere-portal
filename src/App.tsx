@@ -11,7 +11,6 @@ import Index from "./pages/Index";
 import Notes from "./pages/Notes";
 import PreviousYears from "./pages/PreviousYears";
 import Results from "./pages/Results";
-import Schedule from "./pages/Schedule";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
@@ -89,14 +88,6 @@ const App = () => (
                   <>
                     <Navbar />
                     <Results />
-                  </>
-                </ProtectedRoute>
-              } />
-              <Route path="/schedule" element={
-                <ProtectedRoute>
-                  <>
-                    <Navbar />
-                    <Schedule />
                   </>
                 </ProtectedRoute>
               } />
