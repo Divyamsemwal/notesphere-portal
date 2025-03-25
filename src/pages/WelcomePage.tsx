@@ -64,7 +64,7 @@ const WelcomePage = () => {
           <h2 className="text-2xl font-semibold mb-4">Unlock Your Academic Potential</h2>
           <p className="text-white/70 mb-6">
             Access comprehensive study materials, previous year papers, 
-            class schedules, and exam results all in one place.
+            and exam results all in one place.
           </p>
           <Button 
             onClick={() => navigate('/login')} 
@@ -90,8 +90,8 @@ const WelcomePage = () => {
             <p className="text-white/70">Practice with past examination papers</p>
           </div>
           <div className="glass-card p-6 rounded-xl max-w-xs text-center">
-            <h3 className="text-xl font-medium mb-2">Class Schedule</h3>
-            <p className="text-white/70">Never miss an important class or lecture</p>
+            <h3 className="text-xl font-medium mb-2">Exam Results</h3>
+            <p className="text-white/70">Access your academic performance records</p>
           </div>
         </motion.div>
       </div>

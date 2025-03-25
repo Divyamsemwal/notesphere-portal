@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X, BookOpen, FileText, ExternalLink, Calendar, LogIn, UserPlus, LogOut, User } from "lucide-react";
+import { Menu, X, BookOpen, FileText, ExternalLink, LogIn, UserPlus, LogOut, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,11 +20,9 @@ const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
 
   const navigationLinks = [
-    //{ name: "Home", path: "/", icon: <BookOpen className="w-5 h-5" /> },
     { name: "Notes", path: "/notes", icon: <BookOpen className="w-5 h-5" /> },
     { name: "Previous Years", path: "/previous-years", icon: <FileText className="w-5 h-5" /> },
     { name: "Results", path: "/results", icon: <ExternalLink className="w-5 h-5" /> },
-    { name: "Schedule", path: "/schedule", icon: <Calendar className="w-5 h-5" /> },
   ];
 
   useEffect(() => {
